@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sathvik Jonnalagadda’s Journey</title>
+  
+  <!-- Updated Google Fonts: Montserrat and Playfair Display -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+  
+  <!-- Custom Cursor -->
+  <div class="custom-cursor"></div>
+
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" aria-label="Toggle dark/light mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <div class="hamburger"><i class="fas fa-bars"></i></div>
+    <div class="nav-links">
+      <a href="#welcome">Home</a>
+      <a href="#work">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#story">About</a>
+      <a href="#certs">Certifications</a>
+      <a href="#chat">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Welcome Section -->
+  <section class="welcome" id="welcome">
+    <h1>Hey, I’m Sathvik Jonnalagadda!</h1>
+    <p>A final-year B.Tech student passionate about AI, web development, and solving real-world problems with technology.</p>
+    <img src="sathvik-photo.jpg" alt="Sathvik" loading="lazy">
+    <a href="#work" class="cta">Check Out My Work</a>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="my-work" id="work">
+    <h2>My Projects</h2>
+    <div class="project-story">
+      <img src="diabetes-app.jpg" alt="Screenshot of Diabetes Prediction Web App" loading="lazy">
+      <h3>Diabetes Prediction Web App</h3>
+      <p>A machine-learning-powered web app that helps users assess their risk of diabetes. Features user authentication and personalized health tips.</p>
+      <p><a href="https://github.com/sathvikj9/diabetes-prediction" target="_blank">View Code</a> | <a href="#" target="_blank">Live Demo</a></p>
+    </div>
+    <div class="project-story">
+      <img src="finance-tracker.jpg" alt="Screenshot of Personal Finance Tracker" loading="lazy">
+      <h3>Personal Finance Tracker</h3>
+      <p>Designed a budget tracker to manage expenses efficiently. Includes income tracking, data visualization, and a user-friendly UI.</p>
+      <p><a href="https://github.com/sathvikj9/finance-tracker" target="_blank">View Code</a> | <a href="#" target="_blank">Live Demo</a></p>
+    </div>
+    <div class="project-story">
+      <img src="placeholder.jpg" alt="Placeholder for Work in Progress Project" loading="lazy">
+      <h3>Work in Progress</h3>
+      <p>Currently building an AI-powered chatbot. Stay tuned for updates!</p>
+      <p><a href="#" target="_blank">Coming Soon</a></p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="my-skills" id="skills">
+    <h2>Technical Skills</h2>
+    <div class="skills-list">
+      <div class="skill-card"><i class="fab fa-python"></i><h3>Python</h3><p>Proficient in Python for AI, ML, and automation.</p></div>
+      <div class="skill-card"><i class="fab fa-js"></i><h3>JavaScript</h3><p>Experienced in front-end development and dynamic web apps.</p></div>
+      <div class="skill-card"><i class="fab fa-html5"></i><h3>HTML/CSS</h3><p>Strong foundation in web design and responsive layouts.</p></div>
+      <div class="skill-card"><i class="fas fa-brain"></i><h3>AI/ML</h3><p>Knowledgeable in NLP, TensorFlow, and ML model development.</p></div>
+      <div class="skill-card"><i class="fab fa-angular"></i><h3>Angular</h3><p>Building scalable and dynamic web applications.</p></div>
+      <div class="skill-card"><i class="fab fa-django"></i><h3>Django</h3><p>Backend development with secure APIs and database handling.</p></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="my-story" id="story">
+    <h2>My Journey So Far</h2>
+    <div class="timeline">
+      <div class="moment"><h3>2021 - Present</h3><p>B.Tech in CSE (AI) at Parul University, Vadodara. Gaining expertise in AI, software development, and project management.</p></div>
+      <div class="moment"><h3>2019 - 2021</h3><p>Intermediate (MPC) at Narayana Junior College, Vijayawada. Developed a strong foundation in mathematics and logic.</p></div>
+      <div class="moment"><h3>2019</h3><p>10th at Ushodaya, Pamarru. Scored a perfect 10/10 CGPA, discovering my passion for programming.</p></div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section class="my-certs" id="certs">
+    <h2>Certifications</h2>
+    <div class="cert-list">
+      <div class="cert-item"><h3>Build Your First Chatbot - IBM SkillsBuild</h3><p>March 2025 - Hands-on chatbot development.</p></div>
+      <div class="cert-item"><h3>Python Essentials 1 - Cisco Networking Academy</h3><p>May 2024 - Strengthened Python programming skills.</p></div>
+      <div class="cert-item"><h3>Summer Internship - ByteXL</h3><p>May 2024 - Worked on software projects and coding challenges.</p></div>
+      <div class="cert-item"><h3>Web Development Certification - TeachNook</h3><p>June 2023 - Built a strong foundation in front-end technologies.</p></div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="chat-with-me" id="chat">
+    <h2>Let’s Connect!</h2>
+    <form class="contact-form" action="https://formspree.io/f/mjvqdpea" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="goodbye">
+    <a href="https://github.com/5athvik" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/sathvik-jonnalagadda" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:sathvikjonnalagadda9@gmail.com"><i class="fas fa-envelope"></i></a>
+    <p>Email: sathvikjonnalagadda9@gmail.com | Phone: +91 9346304933</p>
+    <p>Fun fact: I once debugged a project at 3 AM with chai as my co-pilot.</p>
+    <p>© 2025 Sathvik Jonnalagadda</p>
+  </footer>
+
+  <!-- Back-to-Top Button -->
+  <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

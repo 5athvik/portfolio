@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sathvik Jonnalagadda’s Journey</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    :root {
+      /* Dark Theme Palette */
+      --primary-color: #c85a00;
+      --secondary-color: #ff8400;
+      --background-color: #000000;
+      --text-color: #ffffff;
+      --accent-color: #d7713d;
+      --shadow-color: rgba(255, 132, 0, 0.5);
+      --card-bg: rgba(255, 255, 255, 0.05);
+    }
+
+    :root.light-theme {
+      /* Light Theme Palette */
+      --primary-color: #6c5ce7;
+      --secondary-color: #00cec9;
+      --background-color: #f5f5f5;
+      --text-color: #1a1a2e;
+      --accent-color: #ff7675;
+      --shadow-color: rgba(108, 92, 231, 0.3);
+      --card-bg: rgba(108, 92, 231, 0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--secondary-color);
+      margin: 0;
+    }
+
+    /* Particle Background */
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      z-index: 102;
+      transition: width 0.2s ease;
+    }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--accent-color);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 999;
+      transition: transform 0.1s ease, background 0.2s ease;
+    }
+
+    .custom-cursor.hover {
+      transform: scale(1.5);
+      background: rgba(215, 113, 61, 0.2);
+    }
+
+    .light-theme .custom-cursor.hover {
+      background: rgba(255, 118, 117, 0.2);
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 103;
+    }
+
+    .theme-toggle:hover {
+      background: var(--secondary-color);
+      transform: rotate(180deg);
+      box-shadow: 0 0 15px var(--shadow-color);
+    }
+
+    /* Navbar */
+    .nav-bar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(26, 26, 46, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      text-align: center;
+      z-index: 100;
+      transition: transform 0.4s ease;
+    }
+
+    .light-theme .nav-bar {
+      background: rgba(245, 245, 245, 0.9);
+    }
+
+    .nav-bar.hidden { transform: translateY(-100%); }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5em;
+      color: var(--accent-color);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .hamburger:hover { transform: rotate(90deg); }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .nav-bar a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 1.2em;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-bar a:hover {
+      background: var(--primary-color);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Welcome Section */
+    .welcome {
+      padding: 150px 20px;
+      text-align: center;
+      background: linear-gradient(var(--background-color), rgba(200, 90, 0, 0.1));
+    }
+
+    .light-theme .welcome {
+      background: linear-gradient(var(--background-color), rgba(108, 92, 231, 0.1));
+    }
+
+    .welcome h1 {
+      font-size: 4em;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .welcome p {
+      font-size: 1.5em;
+      color: var(--accent-color);
+      font-family: 'Poppins', sans-serif;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      font-weight: 300;
+    }
+
+    .welcome img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      margin: 20px auto;
+      border: 4px solid var(--secondary-color);
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 20px var(--shadow-color);
+      display: block;
+    }
+
+    .welcome img:hover { transform: scale(1.05); }
+
+    .welcome .cta {
+      padding: 14px 30px;
+      background: var(--primary-color);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      display: inline-block;
+    }
+
+    .welcome .cta:hover {
+      background: var(--secondary-color);
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px var(--shadow-color);
+    }
+
+    /* Sections */
+    .my-work, .my-skills, .my-story, .my-certs, .chat-with-me {
+      padding: 80px 20px;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 2.5em;
+      position: relative;
+      margin-bottom: 60px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 50px;
+      height: 3px;
+      background: var(--accent-color);
+      transform: translateX(-50%);
+    }
+
+    /* Projects */
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .project-story {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid var(--primary-color);
+      text-align: left;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      min-height: 380px; /* Consistent height */
+    }
+
+    .project-story:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px var(--shadow-color);
+    }
+
+    .project-story img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .project-story:hover img { transform: scale(1.05); }
+
+    .project-story h3 {
+      font-size: 1.6em;
+      color: var(--secondary-color);
+      margin-bottom: 10px;
+    }
+
+    .project-story p {
+      font-size: 1em;
+      margin: 0 0 10px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .project-story a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .project-story a:hover { text-decoration: underline; }
+
+    /* Skills */
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid var(--primary-color);
+      text-align: center;
+      transition: all 0.3s ease;
+      min-height: 220px; /* Consistent height */
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px var(--shadow-color);
+    }
+
+    .skill-card i {
+      font-size: 2.5em;
+      color: var(--secondary-color);
+      margin-bottom: 15px;
+    }
+
+    .skill-card h3 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+
+    .skill-card p {
+      font-size: 0.95em;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Journey */
+    .my-story {
+      background: linear-gradient(var(--background-color), rgba(200, 90, 0, 0.1));
+    }
+
+    .light-theme .my-story {
+      background: linear-gradient(var(--background-color), rgba(108, 92, 231, 0.1));
+    }
+
+    .timeline {
+      max-width: 900px;
+      margin: 40px auto;
+      position: relative;
+      padding: 20px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      background: var(--primary-color);
+      transform: translateX(-50%);
+    }
+
+    .moment {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid var(--primary-color);
+      width: 45%;
+      position: relative;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      min-height: 180px; /* Consistent height */
+    }
+
+    .moment:nth-child(odd) {
+      margin-left: 0;
+      margin-right: auto;
+      text-align: right;
+    }
+
+    .moment:nth-child(even) {
+      margin-left: auto;
+      margin-right: 0;
+      text-align: left;
+    }
+
+    .moment:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px var(--shadow-color);
+    }
+
+    .moment::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      background: var(--secondary-color);
+      border-radius: 50%;
+      border: 3px solid var(--background-color);
+      transform: translateY(-50%);
+    }
+
+    .moment:nth-child(odd)::before {
+      right: -30px;
+    }
+
+    .moment:nth-child(even)::before {
+      left: -30px;
+    }
+
+    .moment h3 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .moment p {
+      font-size: 1em;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+    }
+
+    /* Certifications */
+    .cert-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .cert-item {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid var(--primary-color);
+      text-align: left;
+      transition: all 0.3s ease;
+      min-height: 180px; /* Consistent height */
+    }
+
+    .cert-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px var(--shadow-color);
+    }
+
+    .cert-item h3 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+
+    .cert-item p {
+      font-size: 0.95em;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+    }
+
+    /* Contact */
+    .chat-with-me {
+      background: linear-gradient(var(--background-color), rgba(200, 90, 0, 0.1));
+    }
+
+    .light-theme .chat-with-me {
+      background: linear-gradient(var(--background-color), rgba(108, 92, 231, 0.1));
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 35px;
+      background: var(--card-bg);
+      border-radius: 15px;
+      border: 1px solid var(--primary-color);
+      box-shadow: 0 5px 20px var(--shadow-color);
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      margin: 15px 0;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .light-theme .contact-form input,
+    .light-theme .contact-form textarea {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+      box-shadow: 0 0 10px var(--shadow-color);
+      outline: none;
+    }
+
+    .contact-form button {
+      width: 100%;
+      padding: 15px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: var(--secondary-color);
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px var(--shadow-color);
+    }
+
+    /* Footer */
+    .goodbye {
+      padding: 50px;
+      background: rgba(26, 26, 46, 0.9);
+      text-align: center;
+    }
+
+    .light-theme .goodbye {
+      background: rgba(245, 245, 245, 0.9);
+    }
+
+    .goodbye a {
+      color: var(--secondary-color);
+      margin: 0 20px;
+      font-size: 1.8em;
+      transition: all 0.3s ease;
+    }
+
+    .goodbye a:hover { transform: scale(1.2); }
+
+    .goodbye p {
+      font-family: 'Poppins', sans-serif;
+      margin: 10px 0;
+    }
+
+    /* Back-to-Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      transition: all 0.3s ease;
+      z-index: 101;
+    }
+
+    .back-to-top:hover {
+      background: var(--secondary-color);
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px var(--shadow-color);
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(26, 26, 46, 0.9);
+        padding: 20px 0;
+      }
+      .light-theme .nav-links {
+        background: rgba(245, 245, 245, 0.9);
+      }
+      .nav-links.active { display: flex; }
+      .welcome h1 { font-size: 2.5em; }
+      .welcome p { font-size: 1.2em; }
+      .welcome img { width: 180px; height: 180px; }
+      .timeline::before { display: none; }
+      .moment {
+        width: 90%;
+        margin: 20px auto;
+        text-align: center;
+      }
+      .moment::before { display: none; }
+      .project-story, .skill-card, .cert-item { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-bar"></div>
+  <canvas id="particles"></canvas>
+  <div class="custom-cursor"></div>
+
+  <button class="theme-toggle" aria-label="Toggle dark/light mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <nav class="nav-bar">
+    <div class="hamburger"><i class="fas fa-bars"></i></div>
+    <div class="nav-links">
+      <a href="#welcome">Home</a>
+      <a href="#work">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#story">About</a>
+      <a href="#certs">Certifications</a>
+      <a href="#chat">Contact</a>
+    </div>
+  </nav>
+
+  <section class="welcome" id="welcome">
+    <h1>Sathvik Jonnalagadda</h1>
+    <p>Hey there! I’m a final-year B.Tech student in Computer Science & AI at Parul University, obsessed with building tech that solves real problems. From crafting AI-driven solutions to designing sleek web apps, I thrive on turning ideas into reality.</p>
+    <img src="sathvik.png" alt="Sathvik Jonnalagadda" loading="lazy">
+    <a href="#work" class="cta">Dive Into My Creations</a>
+  </section>
+
+  <section class="my-work" id="work">
+    <h2>My Projects</h2>
+    <div class="project-list">
+      <div class="project-story">
+        <img src="diabetes-app.jpg" alt="Diabetes Prediction Web App" loading="lazy">
+        <h3>Diabetes Prediction Web App</h3>
+        <p>Built a cutting-edge web application powered by machine learning to predict diabetes risk. Features include secure user authentication, personalized health insights, and a responsive UI crafted with Angular and Django.</p>
+        <p><a href="https://github.com/sathvikj9/diabetes-prediction" target="_blank">View Code</a> | <a href="#" target="_blank">Live Demo</a></p>
+      </div>
+      <div class="project-story">
+        <img src="finance-tracker.jpg" alt="Personal Finance Tracker" loading="lazy">
+        <h3>Personal Finance Tracker</h3>
+        <p>Developed a robust budget management tool that tracks income and expenses with real-time data visualization. Designed with JavaScript and HTML/CSS, it’s intuitive, mobile-friendly, and perfect for financial planning.</p>
+        <p><a href="https://github.com/sathvikj9/finance-tracker" target="_blank">View Code</a> | <a href="#" target="_blank">Live Demo</a></p>
+      </div>
+      <div class="project-story">
+        <img src="placeholder.jpg" alt="AI Chatbot Project" loading="lazy">
+        <h3>AI-Powered Chatbot</h3>
+        <p>Currently engineering an intelligent chatbot using Python and NLP techniques. Aiming to integrate it with web platforms for seamless user interaction—watch this space for an exciting reveal!</p>
+        <p><a href="#" target="_blank">Coming Soon</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-skills" id="skills">
+    <h2>Technical Arsenal</h2>
+    <div class="skills-list">
+      <div class="skill-card">
+        <i class="fab fa-python"></i>
+        <h3>Python</h3>
+        <p>Mastered Python for AI/ML, automation scripts, and backend development with frameworks like Django.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-js"></i>
+        <h3>JavaScript</h3>
+        <p>Skilled in creating dynamic, interactive front-end experiences with vanilla JS and modern libraries.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-html5"></i>
+        <h3>HTML/CSS</h3>
+        <p>Expert at crafting responsive, pixel-perfect web designs with a focus on user experience.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-brain"></i>
+        <h3>AI/ML</h3>
+        <p>Proficient in NLP, TensorFlow, and building predictive models for real-world applications.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-angular"></i>
+        <h3>Angular</h3>
+        <p>Experienced in developing scalable, component-based web applications with Angular.</p>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-django"></i>
+        <h3>Django</h3>
+        <p>Adept at building secure, RESTful APIs and managing databases for robust backends.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-story" id="story">
+    <h2>My Journey So Far</h2>
+    <div class="timeline">
+      <div class="moment">
+        <h3>2021 - Present</h3>
+        <p>Pursuing B.Tech in Computer Science & AI at Parul University, Vadodara. Leading innovative projects, mastering AI algorithms, and maintaining a CGPA of 8.5+ while exploring cutting-edge tech.</p>
+      </div>
+      <div class="moment">
+        <h3>2019 - 2021</h3>
+        <p>Completed Intermediate (MPC) at Narayana Junior College, Vijayawada with a stellar 95%. Built a strong foundation in mathematics and physics, sparking my interest in computational problem-solving.</p>
+      </div>
+      <div class="moment">
+        <h3>2019</h3>
+        <p>Aced 10th grade at Ushodaya High School, Pamarru with a perfect 10/10 CGPA. Won multiple coding competitions and discovered my passion for programming and technology.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-certs" id="certs">
+    <h2>Certifications & Achievements</h2>
+    <div class="cert-list">
+      <div class="cert-item">
+        <h3>IBM SkillsBuild - Chatbot Development</h3>
+        <p>March 2025 - Designed and deployed a fully functional chatbot using IBM Watson, mastering conversational AI and user interaction design.</p>
+      </div>
+      <div class="cert-item">
+        <h3>Cisco Networking Academy - Python Essentials 1</h3>
+        <p>May 2024 - Strengthened my Python skills with hands-on projects in scripting, automation, and problem-solving.</p>
+      </div>
+      <div class="cert-item">
+        <h3>ByteXL Summer Internship</h3>
+        <p>May 2024 - Collaborated on real-world software solutions, earning praise for innovative problem-solving and teamwork.</p>
+      </div>
+      <div class="cert-item">
+        <h3>TeachNook - Web Development Certification</h3>
+        <p>June 2023 - Built a solid foundation in front-end development with HTML, CSS, and JavaScript, creating responsive web projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chat-with-me" id="chat">
+    <h2>Let’s Build Something Amazing Together!</h2>
+    <form class="contact-form" action="https://formspree.io/f/mjvqdpea" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Tell me about your ideas or just say hi!" rows="6" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer class="goodbye">
+    <a href="https://github.com/5athvik" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/sathvik-jonnalagadda" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:sathvikjonnalagadda9@gmail.com"><i class="fas fa-envelope"></i></a>
+    <p>Email: sathvikjonnalagadda9@gmail.com | Phone: +91 9346304933</p>
+    <p>Fun Fact: I once coded a game in 48 hours fueled by chai and determination!</p>
+    <p>© 2025 Sathvik Jonnalagadda - All Rights Reserved</p>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    // Particle Background
+    particlesJS('particles', {
+      particles: {
+        number: { value: 100, density: { enable: true, value_area: 800 } },
+        color: { value: ['#c85a00', '#ff8400', '#d7713d'] },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5, random: true },
+        size: { value: 4, random: true },
+        line_linked: { enable: true, distance: 120, color: '#c85a00', opacity: 0.3, width: 1 },
+        move: { enable: true, speed: 3, direction: 'none', random: true }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
+        modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const updateParticles = () => {
+        const isLightTheme = document.documentElement.classList.contains('light-theme');
+        particlesJS('particles', {
+          particles: {
+            number: { value: 100, density: { enable: true, value_area: 800 } },
+            color: { value: isLightTheme ? ['#6c5ce7', '#00cec9', '#ff7675'] : ['#c85a00', '#ff8400', '#d7713d'] },
+            shape: { type: 'circle' },
+            opacity: { value: 0.5, random: true },
+            size: { value: 4, random: true },
+            line_linked: { enable: true, distance: 120, color: isLightTheme ? '#6c5ce7' : '#c85a00', opacity: 0.3, width: 1 },
+            move: { enable: true, speed: 3, direction: 'none', random: true }
+          },
+          interactivity: {
+            detect_on: 'canvas',
+            events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
+            modes: { repulse: { distance: 100 }, push: { particles_nb: 4 } }
+          },
+          retina_detect: true
+        });
+      };
+
+      // Smooth Scroll
+      document.querySelectorAll('.nav-bar a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+          if (window.innerWidth <= 768) {
+            document.querySelector('.nav-links').classList.remove('active');
+          }
+        });
+      });
+
+      // Hamburger Menu
+      document.querySelector('.hamburger').addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.toggle('active');
+      });
+
+      // Theme Toggle
+      const themeToggle = document.querySelector('.theme-toggle');
+      themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('light-theme');
+        const icon = themeToggle.querySelector('i');
+        icon.classList.toggle('fa-moon');
+        icon.classList.toggle('fa-sun');
+        updateParticles();
+      });
+
+      // Form Validation
+      document.querySelector('.contact-form').addEventListener('submit', (e) => {
+        const email = document.querySelector('input[name="email"]').value;
+        if (!/\S+@\S+\.\S+/.test(email)) {
+          e.preventDefault();
+          alert('Please enter a valid email!');
+        }
+      });
+
+      // Back-to-Top and Navbar Hide
+      const backToTop = document.querySelector('.back-to-top');
+      const navBar = document.querySelector('.nav-bar');
+      let lastScroll = 0;
+
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+        if (currentScroll > 300) {
+          backToTop.style.display = 'block';
+          if (currentScroll > lastScroll) {
+            navBar.classList.add('hidden');
+          } else {
+            navBar.classList.remove('hidden');
+          }
+        } else {
+          backToTop.style.display = 'none';
+          navBar.classList.remove('hidden');
+        }
+        lastScroll = currentScroll;
+
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+      });
+
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Custom Cursor
+      const cursor = document.querySelector('.custom-cursor');
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = `${e.clientX - 10}px`;
+        cursor.style.top = `${e.clientY - 10}px`;
+      });
+
+      document.querySelectorAll('a, button, .project-story, .skill-card, .moment, .cert-item').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+      });
+    });
+  </script>
+</body>
+</html>
